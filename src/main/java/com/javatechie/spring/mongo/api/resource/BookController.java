@@ -23,7 +23,7 @@ public class BookController {
 	@PostMapping("/addBook")
 	public String saveBook(@RequestBody Book book) {
 		repository.save(book);
-		return "Added book with id : " + book.getId();
+		return "Added book with id : ";
 	}
 
 	@GetMapping("/findAllBooks")
