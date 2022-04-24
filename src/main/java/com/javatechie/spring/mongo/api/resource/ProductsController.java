@@ -71,11 +71,16 @@ public class ProductsController {
 	public ResponseDTO<String> login(@RequestBody User user) {
 		List<User> list = userRepository.findByName(user.getName());
 		System.out.println("user is "+list);
-		User db = list.get(0);
-		if(user.getPassword().equals(db.getPassword())) {
-			return new ResponseDTO<String>(null,null,null);
+		if(!list.isEmpty()) {
+			User db = list.get(0);
+			if(user.getPassword().equals(db.getPassword())) {
+				return new ResponseDTO<String>(null,null,null);
+			}
 		}
-		return new ResponseDTO<String>(null,"404","INVALID_USER");
+		ResponseDTO<String> res = new ResponseDTO<String>(null,"404","INVALID_USER");
+		res.setStatusCode("404");
+		res.setStatusMsg("INVALID_USER");
+		return res;
 	}
 	
 	
