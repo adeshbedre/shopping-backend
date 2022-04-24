@@ -7,25 +7,26 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
 
-@Document(collection = "Products")
-public class Book {
-//	@Id
-//	private int id;
+@ToString
+@Document(collection = "products")
+public class Products {
+	
+	@Id
+	private String id;
 	private String title;
 	private String brand;
 	private Integer price;
 	private String description;
 	private String image;
-//	public int getId() {
-//		return id;
-//	}
-//	public void setId(int id) {
-//		this.id = id;
-//	}
+
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getTitle() {
 		return title;
 	}
